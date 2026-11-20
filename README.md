@@ -1,4 +1,4 @@
-# SS4A: Drones as First Responders
+# ConnectedAirbag
 
 Project website for the USDOT Safe Streets and Roads for All (SS4A) demonstration project
 *Next-Generation AI-Driven Post-Crash Care Platform with Drones as First Responders (DFR)*,
