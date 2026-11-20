@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SS4A | Next-Generation AI-Driven Post-Crash Care Platform with Drones as First Responders</title>
+<meta name="description" content="USDOT Safe Streets and Roads for All (SS4A) demonstration project led by UC Riverside: an AI-driven post-crash care platform that links airbag deployment data, NG9-1-1, Real Time Intelligence Centers, dispatch, and Drones as First Responders.">
+<link rel="icon" href="assets/ss4a-logo.svg" type="image/svg+xml">
+<style>
+  :root {
+    --navy: #0B3D6B;
+    --navy-dark: #072a4a;
+    --red: #D7263D;
+    --gold: #F2A900;
+    --ink: #1f2933;
+    --muted: #52606d;
+    --line: #e4e7eb;
+    --bg-soft: #f5f7fa;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { margin: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--ink); line-height: 1.65; font-size: 17px; }
+  a { color: var(--navy); }
+  img { max-width: 100%; }
+
+  /* nav */
+  header.nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; text-decoration: none; }
+  .brand img { height: 42px; }
+  nav a { margin-left: 22px; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; letter-spacing: .02em; }
+  nav a:hover { color: var(--red); }
+
+  /* hero */
+  .hero { position: relative; color: #fff; overflow: hidden;
+    background:
+      radial-gradient(circle at 85% 20%, rgba(242,169,0,.25), transparent 40%),
+      radial-gradient(circle at 10% 90%, rgba(215,38,61,.25), transparent 45%),
+      linear-gradient(135deg, var(--navy-dark), var(--navy) 60%, #135a96);
+  }
+  .hero::after { content: ""; position: absolute; inset: 0; opacity: .08;
+    background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
+    background-size: 44px 44px; }
+  .hero-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 90px 24px 80px; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .hero h1 { font-size: clamp(30px, 4.4vw, 50px); line-height: 1.15; margin: 0 0 18px; max-width: 900px; }
+  .hero p.lead { font-size: 20px; max-width: 760px; opacity: .92; margin: 0 0 28px; }
+  .chain { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14px; font-weight: 600; }
+  .chain span.step { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: 6px 14px; }
+  .chain span.arrow { color: var(--gold); font-size: 18px; }
+
+  /* sections */
+  section { padding: 72px 24px; }
+  section.alt { background: var(--bg-soft); }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h2 { font-size: 32px; margin: 0 0 8px; color: var(--navy); }
+  h2 + .sub { color: var(--muted); margin: 0 0 32px; max-width: 760px; }
+  .two-col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .stat b { display: block; font-size: 28px; color: var(--red); line-height: 1.2; }
+  .stat small { color: var(--muted); font-size: 14px; }
+
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+  .card .num { display: inline-flex; width: 34px; height: 34px; border-radius: 50%; align-items: center; justify-content: center; background: var(--navy); color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+  .card h3 { margin: 0 0 6px; font-size: 19px; color: var(--ink); }
+  .card p { margin: 0; color: var(--muted); font-size: 16px; }
+
+  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+  .phase { padding: 22px; border-right: 1px solid var(--line); }
+  .phase:last-child { border-right: 0; }
+  .phase .when { font-size: 13px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .08em; }
+  .phase h4 { margin: 6px 0 4px; font-size: 17px; }
+  .phase p { margin: 0; font-size: 15px; color: var(--muted); }
+  ul.outcomes { columns: 2; column-gap: 40px; padding-left: 20px; margin: 28px 0 0; }
+  ul.outcomes li { margin-bottom: 6px; break-inside: avoid; }
+
+  /* partners */
+  .partner-group { margin-bottom: 40px; }
+  .partner-group h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 14px; }
+  .logo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+  .logo-tile { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; overflow: hidden; }
+  a.logo-tile:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
+  .logo-box { height: 110px; display: flex; align-items: center; justify-content: center; padding: 18px 22px; background: #fff; }
+  .logo-box img { max-height: 74px; max-width: 100%; object-fit: contain; }
+  .logo-box .wordmark { font-weight: 800; font-size: 20px; color: var(--navy); text-align: center; line-height: 1.2; }
+  .logo-meta { border-top: 1px solid var(--line); padding: 12px 16px; background: var(--bg-soft); }
+  .logo-meta b { display: block; font-size: 15px; }
+  .logo-meta span { font-size: 13.5px; color: var(--muted); }
+
+  /* news */
+  .news-item { display: grid; grid-template-columns: 130px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .news-item time { font-weight: 700; color: var(--red); font-size: 15px; }
+  .news-item p { margin: 0; }
+
+  /* footer */
+  footer { background: var(--navy-dark); color: rgba(255,255,255,.85); padding: 48px 24px; font-size: 14.5px; }
+  footer .wrap { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+  footer a { color: #fff; }
+  footer h4 { color: #fff; margin: 0 0 8px; font-size: 15px; text-transform: uppercase; letter-spacing: .1em; }
+  footer .ack-logo { background: #fff; display: inline-block; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; }
+  footer .ack-logo img { height: 44px; display: block; }
+  .disclaimer { opacity: .75; font-size: 13px; margin-top: 12px; }
+
+  @media (max-width: 860px) {
+    .two-col, footer .wrap { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+    .phases { grid-template-columns: 1fr 1fr; }
+    .phase:nth-child(2) { border-right: 0; }
+    .phase:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    ul.outcomes { columns: 1; }
+    nav a { margin-left: 0; margin-right: 16px; }
+    .news-item { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="SS4A home"><img src="assets/ss4a-logo.svg" alt="SS4A: Drones as First Responders"></a>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#approach">Approach</a>
+      <a href="#demonstration">Demonstration</a>
+      <a href="#team">Team</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <span class="eyebrow">USDOT Safe Streets and Roads for All &middot; Demonstration Project</span>
+    <h1>Next-Generation AI-Driven Post-Crash Care Platform with Drones as First Responders</h1>
+    <p class="lead">From airbag deployment to a drone overhead in seconds, not minutes. We are building and piloting a connected emergency-response pipeline in Riverside, California.</p>
+    <div class="chain" aria-label="Response workflow">
+      <span class="step">Airbag deployment</span><span class="arrow">&rarr;</span>
+      <span class="step">AI crash intelligence</span><span class="arrow">&rarr;</span>
+      <span class="step">NG9-1-1 &amp; RTIC</span><span class="arrow">&rarr;</span>
+      <span class="step">Dispatch (CAD)</span><span class="arrow">&rarr;</span>
+      <span class="step">Drone First Responder</span>
+    </div>
+  </div>
+</div>
+
+<section id="overview">
+  <div class="wrap two-col">
+    <div>
+      <h2>Overview</h2>
+      <p>Many crash victims survive the initial impact but lose critical minutes before help is even notified. Emergency notification today still depends on a witness or occupant calling 9-1-1, or on a telematics call center relaying information by voice to a Public Safety Answering Point. Each hand-off adds delay at exactly the moment when faster care saves lives.</p>
+      <p>At the same time, police departments across the country are standing up Real Time Intelligence Centers (RTICs) and Drone First Responder (DFR) programs, but these systems are not yet connected to the crash data that modern vehicles already produce.</p>
+      <p>This project closes that gap. Led by the University of California, Riverside with the City of Riverside and industry partners, it builds a scalable, interoperable digital infrastructure that turns a vehicle's crash signal directly into an automated emergency response, with a drone launched to the scene within seconds of detection.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat"><b>Seconds</b><small>Target crash-to-response time, down from several minutes</small></div>
+      <div class="stat"><b>4</b><small>Integrated layers of the emergency response workflow</small></div>
+      <div class="stat"><b>3 + 3</b><small>Drones and connected vehicles in the pilot demonstration</small></div>
+      <div class="stat"><b>2026&ndash;2028</b><small>Two-year demonstration in Riverside, CA</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="alt">
+  <div class="wrap">
+    <h2>Approach</h2>
+    <p class="sub">Four integrated components, each mapping to a critical layer of the emergency response workflow.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>AI-Driven Crash Intelligence</h3>
+        <p>Ingests real-time crash telemetry and airbag deployment data from connected vehicles and edge sensing, and uses AI to assess crash severity, location, occupant risk, and incident context.</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h3>NG9-1-1 &amp; RTIC Integration</h3>
+        <p>Delivers crash intelligence into Next-Generation 9-1-1 and Real Time Intelligence Centers over a standardized IP-based architecture, with "single pane of glass" operational dashboards.</p>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <h3>Drones as First Responders</h3>
+        <p>Launches drones within seconds of crash detection for aerial situational awareness, scene video, hazard assessment and officer safety, and delivery of trauma kits and pre-hospital blood.</p>
+      </div>
+      <div class="card">
+        <div class="num">4</div>
+        <h3>Dispatch &amp; Public Safety Workflow</h3>
+        <p>Modernizes computer-aided dispatch (CAD) for AI-assisted incident creation, automated prioritization, and coordination between the RTIC and responders in the field.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demonstration">
+  <div class="wrap">
+    <h2>Demonstration</h2>
+    <p class="sub">Development starts with a single drone and vehicle and grows into a small-scale pilot with at least three drones and three connected vehicles from UCR and partner automakers. Every component moves through four phases.</p>
+    <div class="phases">
+      <div class="phase"><div class="when">Phase 1</div><h4>Design &amp; Architecture</h4><p>System requirements, interfaces, and end-to-end architecture.</p></div>
+      <div class="phase"><div class="when">Phase 2</div><h4>Development &amp; Integration</h4><p>Platform build-out and integration across vehicles, 9-1-1, RTIC, CAD, and drones.</p></div>
+      <div class="phase"><div class="when">Phase 3</div><h4>Pilot &amp; Testing</h4><p>Field demonstration and testing in Riverside, California.</p></div>
+      <div class="phase"><div class="when">Phase 4</div><h4>Evaluation &amp; Scale-up</h4><p>Measured benefits, best practices, and a model for nationwide deployment.</p></div>
+    </div>
+    <h3 style="margin-top:40px;margin-bottom:0;font-size:20px;">Expected outcomes</h3>
+    <ul class="outcomes">
+      <li>Shorter crash-to-response times</li>
+      <li>Faster situational awareness for law enforcement and EMS</li>
+      <li>Better coordination among RTICs, NG9-1-1, and field responders</li>
+      <li>Improved survivability for crash victims</li>
+      <li>Improved officer safety at crash scenes</li>
+      <li>Faster adoption of Drone First Responder programs</li>
+      <li>Interoperable public safety digital infrastructure</li>
+      <li>Deployment models that other agencies can reuse</li>
+    </ul>
+  </div>
+</section>
+
+<section id="team" class="alt">
+  <div class="wrap">
+    <h2>Team &amp; Partners</h2>
+    <p class="sub">The team spans the full crash response workflow, from the vehicle to the 9-1-1 center to the drone in the air.</p>
+
+    <div class="partner-group">
+      <h3>Lead Institution</h3>
+      <div class="logo-grid" data-partners="lead"></div>
+    </div>
+    <div class="partner-group">
+      <h3>Project Partners</h3>
+      <div class="logo-grid" data-partners="partners"></div>
+    </div>
+    <div class="partner-group">
+      <h3>Supporting Automakers</h3>
+      <div class="logo-grid" data-partners="oems"></div>
+    </div>
+    <div class="partner-group" style="margin-bottom:0">
+      <h3>Sponsor</h3>
+      <div class="logo-grid" data-partners="sponsor"></div>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="wrap">
+    <h2>News</h2>
+    <div class="news-item">
+      <time datetime="2026-10-30">Oct 30, 2026</time>
+      <p>The U.S. Department of Transportation selected UC Riverside's project for a <b>$3.8M</b> FY2026 Safe Streets and Roads for All (SS4A) Planning and Demonstration award ($4.75M total project cost), in coordination with the City of Riverside.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <h4>Acknowledgement</h4>
+      <a class="ack-logo" href="https://www.transportation.gov/grants/SS4A" target="_blank" rel="noopener"><img src="assets/logos/usdot.png" alt="U.S. Department of Transportation"></a>
+      <p style="margin:0">This project is supported by the U.S. Department of Transportation through the Safe Streets and Roads for All (SS4A) grant program.</p>
+      <p class="disclaimer">The contents of this website reflect the views of the project team, who are responsible for the facts and accuracy of the information presented. They do not necessarily reflect the official views or policies of the U.S. Department of Transportation.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p style="margin:0 0 6px">Principal Investigator: <a href="https://cisl.ucr.edu/people/" target="_blank" rel="noopener">Hang Qiu</a></p>
+      <p style="margin:0 0 6px"><a href="https://cisl.ucr.edu/" target="_blank" rel="noopener">Collaborative Intelligence Systems Lab (CISL)</a></p>
+      <p style="margin:0">University of California, Riverside</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Partner tiles. To add a logo: put the file in assets/logos/ and set `logo` to its file name.
+  // Partners without a logo show their name as a clean text tile.
+  var PARTNERS = {
+    lead: [
+      { id: "ucr", name: "University of California, Riverside", role: "Lead institution · Collaborative Intelligence Systems Lab", url: "https://cisl.ucr.edu/" }
+    ],
+    partners: [
+      { id: "city-of-riverside", name: "City of Riverside", role: "Deployment partner · law enforcement & public safety", url: "https://riversideca.gov/" },
+      { id: "lsl", name: "LiDAR Saving Lives Public Safety Coalition", short: "LiDAR Saving Lives", role: "Public safety coalition · NG9-1-1 crash data", url: "" },
+      { id: "roadmedic", name: "ROADMEDIC®", role: "Airbag-deployment crash intelligence for 9-1-1", url: "" },
+      { id: "bulbul", name: "Bulbul Inc.", role: "Emergency drone delivery", url: "" },
+      { id: "tamus-cacn", name: "Texas A&M University System", short: "Texas A&M System · CACN", role: "Center for Applied Communications and Networks", url: "https://cacn.tamus.edu/" }
+    ],
+    oems: [
+      { id: "toyota", name: "Toyota", role: "Letter of support", url: "https://www.toyota.com/" },
+      { id: "volvo", name: "Volvo", role: "Letter of support", url: "https://www.volvocars.com/" }
+    ],
+    sponsor: [
+      { id: "usdot", logo: "usdot.png", name: "U.S. Department of Transportation", role: "Safe Streets and Roads for All (SS4A)", url: "https://www.transportation.gov/grants/SS4A" }
+    ]
+  };
+
+  function fillLogo(box, p) {
+    if (p.logo) {
+      var img = document.createElement("img");
+      img.src = "assets/logos/" + p.logo;
+      img.alt = p.name;
+      box.appendChild(img);
+    } else {
+      var w = document.createElement("div");
+      w.className = "wordmark";
+      w.textContent = p.short || p.name;
+      box.appendChild(w);
+    }
+  }
+
+  document.querySelectorAll("[data-partners]").forEach(function (grid) {
+    PARTNERS[grid.dataset.partners].forEach(function (p) {
+      var tile = document.createElement(p.url ? "a" : "div");
+      tile.className = "logo-tile";
+      if (p.url) { tile.href = p.url; tile.target = "_blank"; tile.rel = "noopener"; }
+      var box = document.createElement("div");
+      box.className = "logo-box";
+      fillLogo(box, p);
+      var meta = document.createElement("div");
+      meta.className = "logo-meta";
+      var b = document.createElement("b"); b.textContent = p.name;
+      var s = document.createElement("span"); s.textContent = p.role;
+      meta.appendChild(b); meta.appendChild(s);
+      tile.appendChild(box); tile.appendChild(meta);
+      grid.appendChild(tile);
+    });
+  });
+</script>
+</body>
+</html>
