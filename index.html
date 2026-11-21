@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ConnectedAirbag | Next-Generation AI-Driven Post-Crash Care Platform with Drones as First Responders</title>
 <meta name="description" content="USDOT Safe Streets and Roads for All (SS4A) demonstration project led by UC Riverside: an AI-driven post-crash care platform that links airbag deployment data, NG9-1-1, Real Time Intelligence Centers, dispatch, and Drones as First Responders.">
-<link rel="icon" href="assets/connectedairbag-logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://cisl.ucr.edu/SS4A/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ConnectedAirbag: AI-Driven Post-Crash Care with Drones as First Responders">
+<meta property="og:description" content="A USDOT Safe Streets and Roads for All demonstration in Riverside, CA, led by UC Riverside: from airbag deployment to a drone overhead in seconds.">
+<meta property="og:url" content="https://cisl.ucr.edu/SS4A/">
+<meta property="og:image" content="https://cisl.ucr.edu/SS4A/assets/img/overview.png">
+<meta name="twitter:card" content="summary_large_image">
 <style>
   :root {
     --navy: #0B3D6B;
@@ -26,8 +33,8 @@
   /* nav */
   header.nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
   .nav-inner { max-width: 1100px; margin: 0 auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .brand { display: flex; align-items: center; text-decoration: none; }
-  .brand img { height: 42px; }
+  .brand { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+  .brand img { height: 36px; display: block; }
   nav a { margin-left: 22px; font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: none; letter-spacing: .02em; }
   nav a:hover { color: var(--red); }
 
@@ -48,6 +55,7 @@
   .chain { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14px; font-weight: 600; }
   .chain span.step { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: 6px 14px; }
   .chain span.arrow { color: var(--gold); font-size: 18px; }
+  .chain .step-wrap { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
 
   /* sections */
   section { padding: 72px 24px; }
@@ -59,14 +67,15 @@
   .overview-grid { display: grid; grid-template-columns: 6fr 4fr; gap: 48px; align-items: center; }
   .overview-grid p:first-child { margin-top: 0; }
   .overview-fig { margin: 0; }
+  .overview-fig > a { display: block; cursor: zoom-in; }
   .overview-fig img { display: block; width: 100%; height: auto; }
   .overview-fig figcaption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 10px; }
   .two-col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
 
-  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
-  .card .num { display: inline-flex; width: 34px; height: 34px; border-radius: 50%; align-items: center; justify-content: center; background: var(--navy); color: #fff; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
-  .card h3 { margin: 0 0 6px; font-size: 19px; color: var(--ink); }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); background: #fff; }
+  .card { padding: 28px 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .card .num { font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--red); margin-bottom: 8px; }
+  .card h3 { margin: 0 0 8px; font-size: 19px; color: var(--ink); }
   .card p { margin: 0; color: var(--muted); font-size: 16px; }
 
   .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
@@ -79,9 +88,9 @@
   ul.outcomes li { margin-bottom: 6px; break-inside: avoid; }
 
   /* partners */
-  .team-wall { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .team-wall { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); background: #fff; }
   .team-wall > * { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 30px 20px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: background .2s; }
-  .team-wall > a:hover { background: var(--bg-soft); }
+  .team-wall > a:hover { background: #fafbfc; }
   .team-wall .mark { height: 76px; width: 100%; display: flex; align-items: center; justify-content: center; }
   .team-wall .mark img { max-height: 100%; max-width: 88%; object-fit: contain; }
   .team-wall .mark .wordmark { font-weight: 800; font-size: 19px; color: var(--navy); text-align: center; line-height: 1.2; }
@@ -96,13 +105,16 @@
 
   /* footer */
   footer { background: var(--navy-dark); color: rgba(255,255,255,.85); padding: 48px 24px; font-size: 14.5px; }
-  footer .wrap { max-width: 860px; }
+  footer .wrap > div { max-width: 760px; }
   footer a { color: #fff; }
   footer h4 { color: #fff; margin: 0 0 8px; font-size: 15px; text-transform: uppercase; letter-spacing: .1em; }
   footer .ack-logo { background: #fff; display: inline-block; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; }
   footer .ack-logo img { height: 44px; display: block; }
   .disclaimer { opacity: .75; font-size: 13px; margin-top: 12px; }
 
+  @media (max-width: 560px) {
+    header.nav nav { display: none; }
+  }
   @media (max-width: 860px) {
     .two-col { grid-template-columns: 1fr; }
     .cards, .overview-grid { grid-template-columns: 1fr; }
@@ -111,7 +123,16 @@
     .phase:nth-child(2) { border-right: 0; }
     .phase:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
     ul.outcomes { columns: 1; }
-    nav a { margin-left: 0; margin-right: 16px; }
+    .nav-inner { flex-wrap: nowrap; }
+    nav { display: flex; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+    nav::-webkit-scrollbar { display: none; }
+    nav a { margin-left: 16px; font-size: 13px; }
+    nav a:first-child { margin-left: 0; }
+    .brand img { height: 28px; }
+    .logo-strip { gap: 1rem 2rem; }
+    .logo-strip a { height: 3.2rem; max-width: 8rem; padding: 4px; }
+    .card { padding: 22px; }
+    .team-wall .mark .wordmark { font-size: 15px; }
   }
 </style>
 </head>
@@ -119,7 +140,7 @@
 
 <header class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top" aria-label="ConnectedAirbag home"><img src="assets/connectedairbag-logo.svg" alt="ConnectedAirbag"></a>
+    <a class="brand" href="#top" aria-label="ConnectedAirbag home"><img src="assets/connectedairbag-wordmark.svg" alt="ConnectedAirbag"></a>
     <nav>
       <a href="#overview">Overview</a>
       <a href="#approach">Approach</a>
@@ -136,10 +157,10 @@
     <p class="title-full">Next-Generation AI-Driven Post-Crash Care Platform with Drones as First Responders</p>
     <p class="lead">From airbag deployment to a drone overhead in seconds, not minutes. We are building and piloting a connected emergency-response pipeline in Riverside, California.</p>
     <div class="chain" aria-label="Response workflow">
-      <span class="step">Airbag deployment</span><span class="arrow">&rarr;</span>
-      <span class="step">AI crash intelligence</span><span class="arrow">&rarr;</span>
-      <span class="step">NG9-1-1 &amp; RTIC</span><span class="arrow">&rarr;</span>
-      <span class="step">Dispatch (CAD)</span><span class="arrow">&rarr;</span>
+      <span class="step-wrap"><span class="step">Airbag deployment</span><span class="arrow" aria-hidden="true">&rarr;</span></span>
+      <span class="step-wrap"><span class="step">AI crash intelligence</span><span class="arrow" aria-hidden="true">&rarr;</span></span>
+      <span class="step-wrap"><span class="step">NG9-1-1 &amp; RTIC</span><span class="arrow" aria-hidden="true">&rarr;</span></span>
+      <span class="step-wrap"><span class="step">Dispatch (CAD)</span><span class="arrow" aria-hidden="true">&rarr;</span></span>
       <span class="step">Drone First Responder</span>
     </div>
   </div>
@@ -155,8 +176,8 @@
       <p>ConnectedAirbag closes that gap. Led by the University of California, Riverside with the City of Riverside and industry partners, it builds a scalable, interoperable digital infrastructure that turns a vehicle's airbag deployment directly into an automated emergency response, with a drone launched to the scene within seconds of detection.</p>
     </div>
     <figure class="overview-fig">
-      <img src="assets/img/overview.png" alt="ConnectedAirbag system overview: a crashed vehicle's airbag deployment and V2X data flow through the LiDAR Saving Lives clearinghouse and ROADMEDIC to the Real Time Intelligence Center, which dispatches a Drone First Responder alongside police, fire, and EMS.">
-      <figcaption>From airbag deployment to Drone First Responder dispatch.</figcaption>
+      <a href="assets/img/overview.png" target="_blank" rel="noopener" title="Open full-size figure"><img src="assets/img/overview.png" alt="ConnectedAirbag system overview: a crashed vehicle's airbag deployment and V2X data flow through the LiDAR Saving Lives clearinghouse and ROADMEDIC to the Real Time Intelligence Center, which dispatches a Drone First Responder alongside police, fire, and EMS."></a>
+      <figcaption>From airbag deployment to Drone First Responder dispatch. <a href="assets/img/overview.png" target="_blank" rel="noopener">View full size</a></figcaption>
     </figure>
     </div>
   </div>
@@ -168,22 +189,22 @@
     <p class="sub">Four integrated components, each mapping to a critical layer of the emergency response workflow.</p>
     <div class="cards">
       <div class="card">
-        <div class="num">1</div>
+        <div class="num">01</div>
         <h3>AI-Driven Crash Intelligence</h3>
         <p>Ingests real-time crash telemetry and airbag deployment data from connected vehicles and edge sensing, and uses AI to assess crash severity, location, occupant risk, and incident context.</p>
       </div>
       <div class="card">
-        <div class="num">2</div>
+        <div class="num">02</div>
         <h3>NG9-1-1 &amp; RTIC Integration</h3>
         <p>Delivers crash intelligence into Next-Generation 9-1-1 and Real Time Intelligence Centers over a standardized IP-based architecture, with "single pane of glass" operational dashboards.</p>
       </div>
       <div class="card">
-        <div class="num">3</div>
+        <div class="num">03</div>
         <h3>Drones as First Responders</h3>
         <p>Launches drones within seconds of crash detection for aerial situational awareness, scene video, hazard assessment and officer safety, and delivery of trauma kits and pre-hospital blood.</p>
       </div>
       <div class="card">
-        <div class="num">4</div>
+        <div class="num">04</div>
         <h3>Dispatch &amp; Public Safety Workflow</h3>
         <p>Modernizes computer-aided dispatch (CAD) for AI-assisted incident creation, automated prioritization, and coordination between the RTIC and responders in the field.</p>
       </div>
@@ -215,7 +236,7 @@
   </div>
 </section>
 
-<section id="team">
+<section id="team" class="alt">
   <div class="wrap">
     <h2>Team</h2>
     <p class="sub">The team spans the full crash response workflow, from the vehicle to the 9-1-1 center to the drone in the air.</p>
@@ -224,10 +245,6 @@
     <div class="logo-row-group">
       <h3>Supporting Automakers</h3>
       <div class="logo-strip" data-strip="oems"></div>
-    </div>
-    <div class="logo-row-group">
-      <h3>Sponsor</h3>
-      <div class="logo-strip" data-strip="sponsor"></div>
     </div>
   </div>
 </section>
@@ -262,9 +279,6 @@
       { logo: "volvo.png", name: "Volvo", url: "https://www.volvocars.com/" },
       { logo: "ford.png", name: "Ford", url: "https://www.ford.com/" },
       { logo: "karma.png", name: "Karma Automotive", url: "https://karmaautomotive.com/" }
-    ],
-    sponsor: [
-      { logo: "usdot.png", name: "U.S. Department of Transportation", url: "https://www.transportation.gov/grants/SS4A" }
     ]
   };
 
