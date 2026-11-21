@@ -56,10 +56,11 @@
   h2 { font-size: 32px; margin: 0 0 8px; color: var(--navy); }
   h2 + .sub { color: var(--muted); margin: 0 0 32px; max-width: 760px; }
   .title-full { font-size: clamp(20px, 2.4vw, 28px); font-weight: 600; line-height: 1.3; max-width: 860px; margin: 0 0 18px; opacity: .95; }
-  .overview-fig { margin: 36px 0 0; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+  .overview-grid { display: grid; grid-template-columns: 6fr 4fr; gap: 48px; align-items: center; }
+  .overview-grid p:first-child { margin-top: 0; }
+  .overview-fig { margin: 0; }
   .overview-fig img { display: block; width: 100%; height: auto; }
   .overview-fig figcaption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 10px; }
-  .logo-box.dark { background: var(--logo-bg); }
   .two-col { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; }
 
   .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -78,25 +79,19 @@
   ul.outcomes li { margin-bottom: 6px; break-inside: avoid; }
 
   /* partners */
-  .partner-group { margin-bottom: 40px; }
+  .team-wall { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .team-wall > * { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 30px 20px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: background .2s; }
+  .team-wall > a:hover { background: var(--bg-soft); }
+  .team-wall .mark { height: 76px; width: 100%; display: flex; align-items: center; justify-content: center; }
+  .team-wall .mark img { max-height: 100%; max-width: 88%; object-fit: contain; }
+  .team-wall .mark .wordmark { font-weight: 800; font-size: 19px; color: var(--navy); text-align: center; line-height: 1.2; }
+  .team-wall .name { font-size: 13.5px; color: var(--muted); text-align: center; line-height: 1.35; }
+  .logo-row-group { margin-top: 44px; }
   .logo-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 3rem; padding: 8px 4px; }
   .logo-strip a { height: 5rem; max-width: 11rem; display: flex; align-items: center; justify-content: center; padding: 8px; transition: transform .2s; }
   .logo-strip a:hover { transform: translateY(-2px); }
   .logo-strip img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
-  .related { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-  .related a.card { display: block; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; }
-  .related a.card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
-  .related .card .src { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
-  .partner-group h3 { font-size: 14px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 14px; }
-  .logo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
-  .logo-tile { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s; overflow: hidden; }
-  a.logo-tile:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,.08); }
-  .logo-box { height: 110px; display: flex; align-items: center; justify-content: center; padding: 18px 22px; background: #fff; }
-  .logo-box img { max-height: 74px; max-width: 100%; object-fit: contain; }
-  .logo-box .wordmark { font-weight: 800; font-size: 20px; color: var(--navy); text-align: center; line-height: 1.2; }
-  .logo-meta { flex: 1 1 auto; border-top: 1px solid var(--line); padding: 12px 16px; background: var(--bg-soft); }
-  .logo-meta b { display: block; font-size: 15px; }
-  .logo-meta span { font-size: 13.5px; color: var(--muted); }
+  .logo-row-group h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 0 0 12px; font-weight: 700; }
 
 
   /* footer */
@@ -110,7 +105,8 @@
 
   @media (max-width: 860px) {
     .two-col { grid-template-columns: 1fr; }
-    .cards, .related { grid-template-columns: 1fr; }
+    .cards, .overview-grid { grid-template-columns: 1fr; }
+    .team-wall { grid-template-columns: repeat(2, 1fr); }
     .phases { grid-template-columns: 1fr 1fr; }
     .phase:nth-child(2) { border-right: 0; }
     .phase:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
@@ -128,7 +124,6 @@
       <a href="#overview">Overview</a>
       <a href="#approach">Approach</a>
       <a href="#demonstration">Demonstration</a>
-      <a href="#related">Related</a>
       <a href="#team">Team</a>
     </nav>
   </div>
@@ -153,6 +148,7 @@
 <section id="overview">
   <div class="wrap">
     <h2>Overview</h2>
+    <div class="overview-grid">
     <div>
       <p>Many crash victims survive the initial impact but lose critical minutes before help is even notified. Emergency notification today still depends on a witness or occupant calling 9-1-1, or on a telematics call center relaying information by voice to a Public Safety Answering Point. Each hand-off adds delay at exactly the moment when faster care saves lives.</p>
       <p>At the same time, police departments across the country are standing up Real Time Intelligence Centers (RTICs) and Drone First Responder (DFR) programs, but these systems are not yet connected to the crash data that modern vehicles already produce.</p>
@@ -160,8 +156,9 @@
     </div>
     <figure class="overview-fig">
       <img src="assets/img/overview.png" alt="ConnectedAirbag system overview: a crashed vehicle's airbag deployment and V2X data flow through the LiDAR Saving Lives clearinghouse and ROADMEDIC to the Real Time Intelligence Center, which dispatches a Drone First Responder alongside police, fire, and EMS.">
-      <figcaption>Demonstration project overview: from airbag deployment to Drone First Responder dispatch.</figcaption>
+      <figcaption>From airbag deployment to Drone First Responder dispatch.</figcaption>
     </figure>
+    </div>
   </div>
 </section>
 
@@ -218,45 +215,19 @@
   </div>
 </section>
 
-<section id="related">
+<section id="team">
   <div class="wrap">
-    <h2>Related Initiatives</h2>
-    <p class="sub">ConnectedAirbag builds on, and contributes to, broader industry and public safety efforts around automotive emergency data.</p>
-    <div class="related">
-      <a class="card" href="https://cardealerssavinglives.org/" target="_blank" rel="noopener">
-        <div class="src">LiDAR Saving Lives Public Safety Coalition</div>
-        <h3>ADAP-to-RTIC</h3>
-        <p>The Airbag Deployment Automation Protocol-to-Real Time Intelligence Center initiative: an automotive emergency-data pathway that turns a detected airbag deployment into verified crash intelligence for public safety agencies.</p>
-      </a>
-      <a class="card" href="https://covesa.global/" target="_blank" rel="noopener">
-        <div class="src">COVESA</div>
-        <h3>Connected Vehicle Systems Alliance</h3>
-        <p>An open, global community of automotive organizations developing common approaches for connected vehicle systems, including a Connected Vehicle Emergency Dataset. COVESA hosts a Connected Airbag Pavilion at its CES 2027 Networking Reception &amp; Showcase (January 6, 2027, Las Vegas).</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="team" class="alt">
-  <div class="wrap">
-    <h2>Team &amp; Partners</h2>
+    <h2>Team</h2>
     <p class="sub">The team spans the full crash response workflow, from the vehicle to the 9-1-1 center to the drone in the air.</p>
+    <div class="team-wall" data-team="team"></div>
 
-    <div class="partner-group">
-      <h3>Lead Institution</h3>
-      <div class="logo-grid" data-partners="lead"></div>
-    </div>
-    <div class="partner-group">
-      <h3>Project Partners</h3>
-      <div class="logo-grid" data-partners="partners"></div>
-    </div>
-    <div class="partner-group">
+    <div class="logo-row-group">
       <h3>Supporting Automakers</h3>
       <div class="logo-strip" data-strip="oems"></div>
     </div>
-    <div class="partner-group" style="margin-bottom:0">
+    <div class="logo-row-group">
       <h3>Sponsor</h3>
-      <div class="logo-grid" data-partners="sponsor"></div>
+      <div class="logo-strip" data-strip="sponsor"></div>
     </div>
   </div>
 </section>
@@ -273,20 +244,18 @@
 </footer>
 
 <script>
-  // Partner tiles. To add a logo: put the file in assets/logos/ and set `logo` to its file name.
-  // Partners without a logo show their name as a clean text tile.
+  // Team and logo rows. To add a logo: put the file in assets/logos/ and set `logo` to its file name.
+  // Entries without a logo show their name as a text wordmark.
   var PARTNERS = {
-    lead: [
-      { id: "ucr", logo: "ucr.png", name: "University of California, Riverside", role: "Lead institution \u00b7 Bourns College of Engineering, CE-CERT", url: "https://www.ucr.edu/" }
-    ],
-    partners: [
-      { id: "city-of-riverside", logo: "city-of-riverside.png", name: "City of Riverside", role: "Deployment partner", url: "https://riversideca.gov/" },
-      { id: "rpd", name: "Riverside Police Department (RPD)", short: "Riverside Police Department", role: "Law enforcement & first response", url: "https://www.riversideca.gov/rpd/" },
-      { id: "ucr-pd", logo: "ucr-pd.png", name: "UCR Police Department (UCR PD)", role: "Campus law enforcement & safety", url: "https://police.ucr.edu/" },
-      { id: "lsl", logo: "lsl.png", name: "LiDAR Saving Lives Public Safety Coalition", role: "Public safety coalition \u00b7 crash data clearinghouse", url: "https://cardealerssavinglives.org/" },
-      { id: "roadmedic", logo: "roadmedic.png", name: "ROADMEDIC\u00AE", role: "Airbag-deployment crash intelligence for 9-1-1", url: "" },
-      { id: "bulbul", logo: "bulbul.png", bg: "#141414", name: "Bulbul Inc.", role: "Emergency drone delivery", url: "https://bulbuldelivery.com/" },
-      { id: "tamus-cacn", logo: "tamus-cacn.png", bg: "#500000", name: "Texas A&M University System", role: "Center for Applied Communications and Networks", url: "https://cacn.tamus.edu/" }
+    team: [
+      { logo: "ucr.png", name: "University of California, Riverside", url: "https://www.ucr.edu/" },
+      { logo: "city-of-riverside.png", name: "City of Riverside", url: "https://riversideca.gov/" },
+      { name: "Riverside Police Department", wordmark: "Riverside Police Department", url: "https://www.riversideca.gov/rpd/" },
+      { logo: "ucr-pd.png", name: "UCR Police Department", url: "https://police.ucr.edu/" },
+      { logo: "lsl.png", name: "LiDAR Saving Lives Public Safety Coalition", url: "https://cardealerssavinglives.org/" },
+      { logo: "roadmedic.png", name: "ROADMEDIC\u00AE", url: "" },
+      { logo: "bulbul-light.png", name: "Bulbul Inc.", url: "https://bulbuldelivery.com/" },
+      { logo: "tamus-cacn-light.png", name: "Texas A&M University System, CACN", url: "https://cacn.tamus.edu/" }
     ],
     oems: [
       { logo: "toyota.png", name: "Toyota", url: "https://www.toyota.com/" },
@@ -295,50 +264,35 @@
       { logo: "karma.png", name: "Karma Automotive", url: "https://karmaautomotive.com/" }
     ],
     sponsor: [
-      { id: "usdot", logo: "usdot.png", name: "U.S. Department of Transportation", role: "Safe Streets and Roads for All (SS4A)", url: "https://www.transportation.gov/grants/SS4A" }
+      { logo: "usdot.png", name: "U.S. Department of Transportation", url: "https://www.transportation.gov/grants/SS4A" }
     ]
   };
 
-  function fillLogo(box, p) {
-    if (p.logo) {
-      var img = document.createElement("img");
-      img.src = "assets/logos/" + p.logo;
-      img.alt = p.name;
-      box.appendChild(img);
-    } else {
-      var w = document.createElement("div");
-      w.className = "wordmark";
-      w.textContent = p.short || p.name;
-      box.appendChild(w);
-    }
+  function link(p) {
+    var el = document.createElement(p.url ? "a" : "div");
+    if (p.url) { el.href = p.url; el.target = "_blank"; el.rel = "noopener"; }
+    return el;
   }
 
-  document.querySelectorAll("[data-strip]").forEach(function (strip) {
-    PARTNERS[strip.dataset.strip].forEach(function (p) {
-      var a = document.createElement("a");
-      a.href = p.url; a.target = "_blank"; a.rel = "noopener"; a.title = p.name;
-      var img = document.createElement("img");
-      img.src = "assets/logos/" + p.logo; img.alt = p.name;
-      a.appendChild(img); strip.appendChild(a);
+  document.querySelectorAll("[data-team]").forEach(function (wall) {
+    PARTNERS[wall.dataset.team].forEach(function (p) {
+      var cell = link(p);
+      var mark = document.createElement("div"); mark.className = "mark";
+      if (p.logo) {
+        var img = document.createElement("img"); img.src = "assets/logos/" + p.logo; img.alt = p.name; mark.appendChild(img);
+      } else {
+        var w = document.createElement("div"); w.className = "wordmark"; w.textContent = p.wordmark || p.name; mark.appendChild(w);
+      }
+      var name = document.createElement("div"); name.className = "name"; name.textContent = p.name;
+      cell.appendChild(mark); cell.appendChild(name); wall.appendChild(cell);
     });
   });
 
-  document.querySelectorAll("[data-partners]").forEach(function (grid) {
-    PARTNERS[grid.dataset.partners].forEach(function (p) {
-      var tile = document.createElement(p.url ? "a" : "div");
-      tile.className = "logo-tile";
-      if (p.url) { tile.href = p.url; tile.target = "_blank"; tile.rel = "noopener"; }
-      var box = document.createElement("div");
-      box.className = "logo-box" + (p.bg ? " dark" : "");
-      if (p.bg) box.style.setProperty("--logo-bg", p.bg);
-      fillLogo(box, p);
-      var meta = document.createElement("div");
-      meta.className = "logo-meta";
-      var b = document.createElement("b"); b.textContent = p.name;
-      var s = document.createElement("span"); s.textContent = p.role;
-      meta.appendChild(b); meta.appendChild(s);
-      tile.appendChild(box); tile.appendChild(meta);
-      grid.appendChild(tile);
+  document.querySelectorAll("[data-strip]").forEach(function (strip) {
+    PARTNERS[strip.dataset.strip].forEach(function (p) {
+      var a = link(p); a.title = p.name;
+      var img = document.createElement("img"); img.src = "assets/logos/" + p.logo; img.alt = p.name;
+      a.appendChild(img); strip.appendChild(a);
     });
   });
 </script>

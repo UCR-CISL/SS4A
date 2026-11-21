@@ -8,5 +8,5 @@ Served at https://cisl.ucr.edu/SS4A/ via GitHub Pages (branch `main`, root folde
 
 ## Updating partner logos
 1. Put the logo file in `assets/logos/` (SVG or a transparent PNG works best).
-2. In `index.html`, find the partner in the `PARTNERS` list and add `logo: "<file name>"`.
-Partners without a logo appear as a text tile with their name.
+2. In `index.html`, find the entry in the `PARTNERS` list and set `logo: "<file name>"`.
+Entries without a logo show their name as a text wordmark.
